@@ -67,3 +67,21 @@ export class SingleLineInputView extends EditorView {
         }
     }
 }
+
+export class SingleLineInput {
+    constructor(place, props) {
+        props.value = typeof props.value === 'undefined' || props.value === null ? '' : String(props.value);
+        this.view = new SingleLineInputView(place, props);
+    }
+
+    get value() {
+        return this.view.state.doc.textContent;
+    }
+
+    set value(value) {
+        value = typeof value === 'undefined' || value === null ? '' : String(value);
+        if (value !== this.value) {
+            this.view.updateValue(value);
+        }
+    }
+}
