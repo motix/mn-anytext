@@ -4,7 +4,8 @@ import { Decoration, DecorationSet } from 'prosemirror-view';
 export default (options = {}) => {
     const defaultOptions = {
         emptyInputCssClass: 'empty-input',
-        emptyInputText: ''
+        emptyInputText: '',
+        align: 'left'
     };
 
     options = {
@@ -21,7 +22,8 @@ export default (options = {}) => {
                     doc.descendants((node, pos) => {
                         const decoration = Decoration.node(pos, pos + node.nodeSize, {
                             class: options.emptyInputCssClass,
-                            'data-empty-input-text': options.emptyInputText
+                            'data-empty-input-text': options.emptyInputText,
+                            'data-empty-input-align': options.align
                         });
                         decorations.push(decoration);
                     });
